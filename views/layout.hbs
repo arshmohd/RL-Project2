@@ -1,24 +1,43 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    {{!-- <link rel="stylesheet" href="/stylesheets/tailwind.css" /> --}}
-    {{!-- <link rel="stylesheet" href="/stylesheets/styles.css" /> --}}
-    <title>{{appTitle}}</title>
-    
- 
-  </head>
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+   <title>{{appTitle}}</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://kit.fontawesome.com/2453eb7729.js" crossorigin="anonymous"></script>
 
-  <body class=" bg-fuchsia-50" >
+   {{!--
+   <link rel="stylesheet" href="/stylesheets/tailwind.css" /> --}}
+   {{!--
+   <link rel="stylesheet" href="/stylesheets/styles.css" /> --}}
+</head>
 
-    {{{body}}}
+<body class=" bg-gray-50 ">
+   <nav
+      class="relative w-full flex flex-wrap items-center  justify-around py-3  bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+      
+      <li class="p-2 list-none" id="to-left">
+         <p><a class="text-xl font-mono hover:text-indigo-600 text-white pr-2 font-bold" href="/"> Home </a></p>
+      </li>
+      <li class="p-2 list-none" id="to-right">
+         <a class="text-l target:text-[yellow]  font-serif text-white pr-2 font-bold" href="/signup">Signup</a>
+         
+      </li>
+      <li class="nav-item p-3 list-none" id="to-right">
+         <a class="text-l text-white pr-2 font-bold" href="/signin">SignIn</a>
+         
+      </li>
+      <li class="nav-item p-2 list-none" id="to-right">
+         <a class="text-l text-white pr-2 font-bold" href="/logout">Logout</a>
+         
+      </li>
+      </ul>
+   </nav>
+   {{{body}}}
 
-    <script src="/js/script.js"></script>
-  </body>
+   <script src="/js/script.js"></script>
+</body>
 
 </html>
