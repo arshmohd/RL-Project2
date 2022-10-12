@@ -16,23 +16,23 @@
 
 <body class=" bg-gray-50 ">
    <nav
-      class="relative w-full flex flex-wrap items-center  justify-around py-3  bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
+      class="relative w-full flex flex-wrap items-center justify-between py-3  bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light"
       
       <li class="p-2 list-none" id="to-left">
-         <p><a class="text-xl font-mono hover:text-indigo-600 text-white pr-2 font-bold" href="/"> Home </a></p>
+         <p><a class="text-l hover:text-red-100 text-white pr-2 font-semibold" href="/"> Home </a></p>
       </li>
-      <li class="p-2 list-none" id="to-right">
-         <a class="text-l target:text-[yellow]  font-serif text-white pr-2 font-bold" href="/signup">Signup</a>
+      {{!-- <li class="p-2 list-none" id="to-right">
+         <a class="text-l hover:text-red-100 text-white pr-2 font-semibold" href="/signup">Signup</a>
          
-      </li>
+      </li> --}}
       <li class="nav-item p-3 list-none" id="to-right">
-         <a class="text-l text-white pr-2 font-bold" href="/signin">SignIn</a>
+         <a class="text-l hover:text-red-100 text-white pr-2 font-semibold" href="/auth/signin">SignIn</a>
          
       </li>
-      <li class="nav-item p-2 list-none" id="to-right">
-         <a class="text-l text-white pr-2 font-bold" href="/logout">Logout</a>
+      {{!-- <li class="nav-item p-2 list-none" id="to-right">
+         <a class="text-l hover:text-red-100 text-white pr-2 font-semibold" href="/logout">Logout</a>
          
-      </li>
+      </li> --}}
       </ul>
    </nav>
    {{{body}}}

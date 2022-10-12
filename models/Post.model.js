@@ -1,17 +1,16 @@
 const { Schema, model } = require("mongoose");
 require('./User.model');
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
+
 const PostSchema = new Schema(
   {
-    content: {
-      type: String, //redwid does not have content so it is not required.
+    content: { type: String, trim: true },
       postedBy: { type: Schema.Types.ObjectId, ref: "User" },
       pinned: Boolean, //pinned post or not.
       likes: [
         {
           type: Schema.Types.ObjectId,
           ref: "User",
-        },
+        }
       ],
       redweedUsers: [{ type: Schema.Types.ObjectId, ref: "User" }], //its an array of users
       redweedPost: { type: Schema.Types.ObjectId, ref: "Post" }, //id of the post that is being redweeded
@@ -22,7 +21,6 @@ const PostSchema = new Schema(
       pinned: Boolean, // pin the post.
     },
     // this second object adds extra properties: `createdAt` and `updatedAt`
-  },
 
   { timestamps: true }
 );

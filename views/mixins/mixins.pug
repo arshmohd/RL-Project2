@@ -1,0 +1,9 @@
+mixin createPostForm(loggedInUser)
+    .postFormContainer.flex.p-2.border-b-8.shrink-0
+        .userAvatarContainer.w-20.h-20.mb-10
+            img(src=loggedInUser.userAvatar, alt="User's profile picture").w-full.bg-white.rounded-full.border
+        .textareaContainer.flex-1.pl-4
+            textarea#postTextarea(placeholder="What's Happening?").w-full.b-none.resize-none.text-lg.outline-none
+            .buttonsContainer 
+                button#submitPostButton.bg-gray-300.px-3.py-2.rounded-full.font-semibold.text-slate-50 Post
+                

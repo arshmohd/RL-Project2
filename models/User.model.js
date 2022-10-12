@@ -42,7 +42,7 @@ const userSchema = new Schema(
 
     userAvatar: {
       type: String,
-      default: "/images/userAvatar.png",
+      default: "/images/Default-Avatar.svg",
     },
 
     likes: [{ type: Schema.Types.ObjectId, ref: "Post" }], //likes array

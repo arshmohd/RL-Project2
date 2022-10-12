@@ -1,6 +1,7 @@
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
 require("dotenv/config");
+const bodyParse = require("body-parser")
 
 // ℹ️ Connects to the database
 require("./db");
@@ -8,10 +9,10 @@ require("./db");
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
-
-// Handles the handlebars
+ 
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+const pug = require("pug");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.locals.appTitle = `${capitalized(projectName)} created with RootLauncher`;
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+app.use(bodyParse.urlencoded({ extended: false}));
 
 app.use(session({
   secret: 'charmander',
@@ -44,8 +46,12 @@ const index = require("./routes/index.routes");
 app.use("/", index);
 
 const auth = require('./routes/auth.routes');
-app.use('/', auth)
+app.use('/auth', auth)
 
+//API Routes
+
+const postsApiRoutes = require('./routes/api/posts.routes')
+app.use("/api/posts.routes", postsApiRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
