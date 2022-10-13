@@ -12,14 +12,14 @@ html(lang="en")
     body
         nav#to-left.relative.w-full.flex.flex-wrap.items-center.justify-around.py-3.bg-gray-900.text-gray-200.shadow-lg.navbar.navbar-expand-lg.navbar-light(<li='')
             p
-                a.text-l.text-white.pl-2.font-semibold(class='hover:text-red-100' href='/')  Home 
+                a.text-l.text-white.pl-2.font-semibold(class='hover:text-red-100' href='/home')  Home 
 
             li#to-right.nav-item.p-2.list-none
                 a.text-l.text-white.pr-2.font-semibold(class='hover:text-red-100' href='/auth/logout') Logout
         .wrapper.h-full
             .row
                 nav.col-2.flex-col.items-end.h-full 
-                    a(href='/').w-55.flex.items-center.justify-center.p-10.text-6xl.rounded-full(class=" hover:bg-sky-100")
+                    a(href='/home').w-55.flex.items-center.justify-center.p-10.text-6xl.rounded-full(class=" hover:bg-sky-100")
                         img(src='/images/bug.svg', alt='').w-8
                     a(href='/home').w-55.flex.items-center.justify-center.p-10.text-6xl.rounded-full(class=" hover:bg-sky-100")
                         img(src='/images/flat-color-icons_home.svg', alt='').w-8
@@ -31,7 +31,7 @@ html(lang="en")
                         img(src='/images/messages.svg', alt='').w-8
                     a(href='/profile').w-55.flex.items-center.justify-center.p-10.text-6xl.rounded-full(class=" hover:bg-sky-100")
                         img(src='/images/Profile-Logo.svg', alt='').w-8
-                    a(href='/logout').w-55.flex.items-center.justify-center.p-10.text-6xl.rounded-full(class=" hover:bg-sky-100")
+                    a(href='/auth/logout').w-55.flex.items-center.justify-center.p-10.text-6xl.rounded-full(class=" hover:bg-sky-100")
                         img(src='/images/SignOut.svg', alt='').w-8
                 .mainSectionContainer.col-10.col-md-8.col-lg-6.p-2.border-x-4.border-indigo-300.flex-col
                     .titleContainer.p-2.h-12.flex.item-center.border-b-2.border-indigo-200

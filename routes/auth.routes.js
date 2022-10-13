@@ -2,7 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const UserModel = require("../models/User.model");
 // const middleware = require("../middleware");
-// const bodyParse = require("body-parser");
+const bodyParse = require("body-parser");
 
 // const isLoggedOut = require("../middleware/isLoggedOut");
 // const isLoggedIn = require("../middleware/isLoggedIn");
@@ -12,9 +12,6 @@ const UserModel = require("../models/User.model");
 // router.use(bodyParse.urlencoded({ extended: false }));
 
 //Testing MongoDB Connection: 
-
-
-console.log("Is this code even running!!!")
 
 router.get("/signup", (req, res) => {
   console.log("It hit sign-up");
@@ -101,15 +98,15 @@ router.post("/signup", async (req, res, next) => {
           next(err);
         });
     }
-    else {
-      if(email == UserModel.email){
-        payload.errorMessage = "Email already is use";
-      }
-      else{
-        payload.errorMessage = "Username already is use";
-      }
-      res.status(200).render("auth/signup.hbs", payload);
-    }
+    // else {
+    //   if(email == UserModel.email){
+    //     payload.errorMessage = "Email already is use";
+    //   }
+    //   else{
+    //     payload.errorMessage = "Username already is use";
+    //   }
+    //   res.status(200).render("auth/signup.hbs", payload);
+    // }
   }
 
 
@@ -162,10 +159,11 @@ router.post("/signup", async (req, res, next) => {
  
 });
 
-router.get("/signin", (req, res) => {
-  res.render("auth/signin.hbs");
-  // res.render("login.pug");
-});
+// router.get("/signin", (req, res) => {
+//   //First check if there is an active session then send the user to Home-page
+//   res.render("auth/signin.hbs");
+//   // res.render("login.pug");
+// });
 
 router.post("/signin", (req, res, next) => {
   const { email, password } = req.body;
@@ -177,7 +175,8 @@ router.post("/signin", (req, res, next) => {
         let hashPass = users[0].password;
         if (bcrypt.compareSync(password, hashPass)) {
           req.session.loggedInUser = users[0];
-          // console.log(`User0---> ${users[0]}`)
+          console.log(`User0---> ${users[0]}`)
+          console.log("Session details:---->" + req.session.loggedInUser);
           // res.redirect("/profile");
           res.redirect("/home");
         } else {
@@ -198,8 +197,10 @@ router.post("/signin", (req, res, next) => {
     });
 });
 
+
+
 function checkUser(req, res, next) {
-  console.log(`checking if user is loggedIn ${req.session.loggedInUser}`);
+  console.log(`checking if user is loggedIn ----> ${req.session.loggedInUser}`);
   if (req.session.loggedInUser) {
     next();
   } else {
@@ -207,12 +208,26 @@ function checkUser(req, res, next) {
   }
 }
 
-router.get("/home", checkUser, (req, res) => {
-  res.render("auth/profile.hbs", { loggedInUser: req.session.loggedInUser });
-});
+// console.log(req.session)
 
-router.get("/profile", checkUser, (req, res) => {
-  res.render("auth/profile.hbs", { loggedInUser: req.session.loggedInUser });
+// router.get("/home", checkUser, (req, res) => {
+//   res.render("auth/profile.hbs", { loggedInUser: req.session.loggedInUser });
+// });
+
+// router.get("/profile", checkUser, (req, res) => {
+//   console.log("For Profile is it checking here in this route profile----> ")
+//   res.render("index.hbs", { loggedInUser: req.session.loggedInUser });
+// });
+
+router.get("/signin", (req, res, next) => {
+  //First check if there is an active session then send the user to Home-page
+  if (req.session.loggedInUser) {
+    res.redirect("/home");
+  } else {
+    res.render("auth/signin.hbs");
+  }
+  
+  // res.render("login.pug");
 });
 
 router.get("/search", checkUser, (req, res) => {
@@ -220,15 +235,15 @@ router.get("/search", checkUser, (req, res) => {
 });
 
 router.get("/messages", checkUser, (req, res) => {
-  res.render("layouts/main-layout.pug", {
-    loggedInUser: req.session.loggedInUser,
+  res.render("layouts/main-layout-1.pug", {
+    // loggedInUser: req.session.loggedInUser,
   });
 });
 
 router.get("/notifications", checkUser, (req, res) => {
   // console.log("In notification redirect: " + {loggedInUser: req.session.loggedInUser} )
-  let obj1 = {loggedInUser: req.session.loggedInUser}
-  let user = obj1.userName;
+  // let obj1 = {loggedInUser: req.session.loggedInUser}
+  // let user = obj1.userName;
   res.render("layouts/main-layout-1.pug", user);
   // res.render("auth/profile.hbs", {loggedInUser: req.session.loggedInUser});
 });
