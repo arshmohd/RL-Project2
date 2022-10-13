@@ -24,7 +24,9 @@ $("#submitPostButton").click((event) => {
     let html = createPostHtml(postData);
     $(".postsContainer").prepend(html);
     textBox.val("");
-    btn.prop("disabled", true)
+
+    btn.prop("disabled", true);
+    btn.css("background-color", "#ced4da");
   });
 });
 
@@ -33,21 +35,36 @@ function createPostHtml(postData) {
   let displayName = postedBy.firstName + " " + postedBy.lastName;
   let timestamp = postData.createdAt;
 
-  return `<div class='post'>
-              <div class="mainContentContainer">
-                  <div class="userImageContainer w-20 h-20 mb-10">
-                      <img src="${postedBy.userAvatar}">
+  return `<div class='post flex-col shrink-0 p-2 border-b-2 mb-2 cursor-pointer '>
+              <div class="mainContentContainer flex flex-1 ">
+                  <div class="userImageContainer w-20 mb-4 h-20">
+                      <img class="w-full bg-white rounded-full border" src="${postedBy.userAvatar}">
                   </div>
-                  <div class="postContentContainer">
+                  <div class="postContentContainer flex-col pl-2 mt-1 flex-1 ">
                      <div class="header">
-                         <a href="/profile/${postedBy.userName}>${displayName}</a>
-                         <span class="username">${postedBy.userName}</span>
-                         <span class="username">${timestamp}</span>
+                         <a class="displayname font-bold" href="/profile/${postedBy.userName}">${displayName}</a>
+                         <span class="username  text-gray-500">@${postedBy.userName}</span>
+                         <span class="date  text-gray-500">${timestamp}</span>
                      </div>
                      <div class="postBody">
                           <span>${postData.content}</span>
                      </div>
-                     <div class="postFooter">
+                     <div class="postFooter flex items-center">
+                     <div class="postButtonContainer flex flex-1">
+                     <button class="w-6 mt-3">
+                     <img src="https://img.icons8.com/plumpy/24/000000/source-code.png"/>
+                     </button>
+                   </div>
+                   <div class="postButtonContainer flex flex-1">
+                   <button class="w-6 mt-3">
+                   <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-bug-security-dreamstale-lineal-dreamstale-2.png"/>
+                   </button>
+                 </div>
+                 <div class="postButtonContainer flex flex-1">
+                 <button class="w-6 mt-3">
+                 <img src="https://img.icons8.com/external-sbts2018-mixed-sbts2018/58/000000/external-like-social-media-basic-1-sbts2018-mixed-sbts2018.png"/>
+                 </button>
+               </div>
                      </div>
                   </div>
               </div>

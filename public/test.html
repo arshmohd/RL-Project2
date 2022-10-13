@@ -1,0 +1,48 @@
+<div class="post mb-2 shrink-0 cursor-pointer flex-col border-b-2 p-2">
+  <div class="mainContentContainer flex flex-1">
+    <div class="userImageContainer mb-4 h-20 w-20">
+      <img
+        class="w-full rounded-full border bg-white"
+        src="${postedBy.userAvatar}"
+      />
+    </div>
+    <div class="postContentContainer mt-1 flex-1 flex-col pl-2">
+      <div class="header">
+        <a class="displayname font-bold" href="/profile/${postedBy.userName}"
+          >${displayName}</a
+        >
+        <span class="username text-gray-500">@${postedBy.userName}</span>
+        <span class="date text-gray-500">${timestamp}</span>
+      </div>
+      <div class="postBody">
+        <span>${postData.content}</span>
+      </div>
+      <div class="postFooter flex items-center">
+        <div class="postButtonContainer">
+          <button>
+            <img
+              class="w-6"
+              src="https://img.icons8.com/external-febrian-hidayat-flat-febrian-hidayat/64/000000/external-chat-bubble-ui-essential-febrian-hidayat-flat-febrian-hidayat.png"
+            />
+          </button>
+        </div>
+        <div class="postButtonContainer">
+          <button>
+            <img
+              class="w-6"
+              src="https://img.icons8.com/ultraviolet/40/000000/retweet.png"
+            />
+          </button>
+        </div>
+        <div class="postButtonContainer">
+          <button>
+            <img
+              class="w-6"
+              src="https://img.icons8.com/external-flatarticons-blue-flatarticons/65/000000/external-heart-love-flatarticons-blue-flatarticons.png"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
